@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Analytix Sign-Up Form</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#64a3b9",
+                        "nav-button": "#637AB9",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#151b1d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-select-icon {
+            --select-button-svg: url('data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724px%27 height=%2724px%27 fill=%27rgb(108,122,127)%27 viewBox=%270 0 256 256%27%3e%3cpath d=%27M181.66,170.34a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-48-48a8,8,0,0,1,11.32-11.32L128,212.69l42.34-42.35A8,8,0,0,1,181.66,170.34Zm-96-84.68L128,43.31l42.34,42.35a8,8,0,0,0,11.32-11.32l-48-48a8,8,0,0,0-11.32,0l-48,48A8,8,0,0,0,85.66,85.66Z%27%3e%3c/path%3e%3c/svg%3e');
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="flex flex-col min-h-screen">
+    <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-10 py-3">
+        <div class="flex items-center gap-4 text-[#131516] dark:text-white">
+            <div class="size-6 text-primary">
+                <img src="https://i.postimg.cc/fbHxVSPG/logo-removebg-preview.png" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <h2 class="text-lg font-bold leading-tight tracking-[-0.015em] font-display">Analytix</h2>
+        </div>
+
+        <div class="flex items-center gap-8">
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-sm font-medium text-[#131516] dark:text-white hover:text-primary transition-colors" href="{{ url_for('index') }}">Home</a>
+                <a class="text-sm font-medium text-[#131516] dark:text-white hover:text-primary transition-colors" href="#">Services</a>
+            </nav>
+            
+        </div>
+    </header>
+
+    <main class="flex-1 flex items-center justify-center p-6 sm:p-12">
+        <div class="w-full max-w-[520px] bg-white dark:bg-gray-900 shadow-xl rounded-xl p-8 flex flex-col gap-6">
+            <div class="flex flex-col gap-1">
+                <h1 class="text-[#131516] dark:text-white tracking-tight text-[32px] font-bold leading-tight font-display">Create Account</h1>
+                <p class="text-[#637588] text-sm">
+    Already have an account? 
+    <a href="/login" class="text-[#131516] font-bold underline">Login</a>
+</p>
+            </div>
+<div class="space-y-4">
+    <form action="{{ url_for('signup') }}" method="POST" class="space-y-4">
+        
+        <div class="flex flex-col gap-2">
+            <label class="text-[#131516] dark:text-gray-200 text-sm font-medium leading-normal">Registration Method</label>
+            <select name="method" class="form-select-icon flex w-full min-w-0 resize-none rounded-lg text-[#131516] dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dee2e3] dark:border-gray-700 h-12 bg-[image:--select-button-svg] bg-no-repeat bg-[position:right_15px_center] appearance-none p-[12px] text-base font-normal">
+                <option value="email">Email Address</option>
+                <option value="mobile">Mobile Number</option>
+            </select>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label class="text-[#131516] dark:text-gray-200 text-sm font-medium leading-normal">Email or Mobile Number</label>
+            <input name="contact" class="flex w-full min-w-0 resize-none rounded-lg text-[#131516] dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dee2e3] dark:border-gray-700 h-12 placeholder:text-[#6c7a7f] p-[12px] text-base font-normal" placeholder="Enter your email or phone number" type="text"/>
+        </div>
+
+        <div class="pt-2">
+            <button type="submit" name="action" value="get_otp" class="w-full flex cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm font-bold">
+                <span class="truncate">Get OTP</span>
+            </button>
+        </div>
+
+        <div class="flex flex-col gap-2">
+            <label class="text-[#131516] dark:text-gray-200 text-sm font-medium leading-normal">Enter OTP</label>
+            <div class="flex gap-2">
+                <input name="otp_input" class="flex flex-1 min-w-0 rounded-lg text-[#131516] dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dee2e3] dark:border-gray-700 h-12 placeholder:text-[#6c7a7f] p-[12px] text-base font-normal" placeholder="6-digit code" type="text"/>
+                <button type="button" class="min-w-[80px] flex cursor-pointer items-center justify-center rounded-lg h-12 px-4 bg-gray-100 dark:bg-gray-800 text-[#131516] dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors text-sm font-bold">
+                    Enter
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div class="flex flex-col gap-2">
+                <label class="text-[#131516] dark:text-gray-200 text-sm font-medium leading-normal">Create Password</label>
+                <input name="password" class="flex w-full min-w-0 rounded-lg text-[#131516] dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dee2e3] dark:border-gray-700 h-12 placeholder:text-[#6c7a7f] p-[12px] text-base font-normal" placeholder="••••••••" type="password"/>
+            </div>
+            <div class="flex flex-col gap-2">
+                <label class="text-[#131516] dark:text-gray-200 text-sm font-medium leading-normal">Re-enter Password</label>
+                <input class="flex w-full min-w-0 rounded-lg text-[#131516] dark:text-white dark:bg-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-[#dee2e3] dark:border-gray-700 h-12 placeholder:text-[#6c7a7f] p-[12px] text-base font-normal" placeholder="••••••••" type="password"/>
+            </div>
+        </div>
+
+        <div class="pt-4">
+    <button type="submit" name="action" value="create_account" class="w-full flex cursor-pointer items-center justify-center rounded-lg h-14 px-4 bg-[#637AB9] text-white hover:opacity-90 transition-all text-base font-bold shadow-lg shadow-[#637AB9]/20">
+        <span class="truncate">Create Account & Sign In</span>
+    </button>
+</div>
+    </form>
+</div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

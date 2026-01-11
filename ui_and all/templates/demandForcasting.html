@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Milk Demand Insights Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#637AB9",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#15171d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --brand-color: #637AB9;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#131416] dark:text-white">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white dark:bg-background-dark px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<img src="https://i.postimg.cc/fbHxVSPG/logo-removebg-preview.png" alt="Logo" class="w-full h-full object-contain">
+
+</div>
+<h2 class="text-[#131416] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Analytix</h2>
+</div>
+</div>
+<div class="flex items-center gap-9">
+<div class="flex items-center gap-9">
+<a class="text-[#6c717f] dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-[#6c717f] dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Services</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACAxgHz1IY5jFO5qpY81_Pvqn-V-PI9AsfznyegRtrjRrzPmwa08coCcDsGX9ggAG1NrGHOlUGJXwGhwKUSgB6g5RtFxZJbuD_DhZmwwePNx4XuYs6g8sSIpCBEsIq-Cn2NZH9JzNARy6FXP6vf8MUyyPsOmDFu_hxKBjydKeYo3uu2H6y-4muV18V0D6AACzV3MNLdR6ld2sbiQUQbWyB8ML0UBglgAj3SlU5FMPhGu0zTdpwB2ocq2Tgc8N5sHO8gC5tcWZ6Y2M");'></div>
+</div>
+</header>
+<main class="flex flex-col flex-1 max-w-[1200px] mx-auto w-full px-6 py-8">
+<div class="mb-6 flex flex-col gap-2">
+<h1 class="text-3xl font-bold tracking-tight text-[#131416] dark:text-white">Milk Demand Insights Dashboard</h1>
+<p class="text-[#6c717f] dark:text-gray-400 text-base">In-depth performance analysis and predictive demand for milk product lines across India.</p>
+</div>
+<div class="bg-white dark:bg-background-dark rounded-xl shadow-sm border border-primary/10 p-2 mb-8">
+    <div class="flex items-center gap-2 p-1 flex-wrap">
+        <div class="flex h-10 items-center gap-2 px-3 text-[#6c717f] dark:text-gray-400">
+            <span class="material-symbols-outlined text-lg">filter_alt</span>
+            <p class="text-xs font-bold uppercase tracking-wider">Active Filters:</p>
+        </div>
+
+        <button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 pl-3 pr-2 border border-primary/5 hover:bg-primary/20 transition-colors">
+            <p class="text-primary text-sm font-medium leading-normal">India</p>
+            <span class="material-symbols-outlined text-primary text-lg">expand_more</span>
+        </button>
+
+        <button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 pl-3 pr-2 border border-primary/5 hover:bg-primary/20 transition-colors">
+            <p class="text-primary text-sm font-medium leading-normal">
+                {{ request.args.get('state') if request.args.get('state') else 'Gujarat' }}
+            </p>
+            <span class="material-symbols-outlined text-primary text-lg">expand_more</span>
+        </button>
+
+        <button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 pl-3 pr-2 border border-primary/5 hover:bg-primary/20 transition-colors">
+            <p class="text-primary text-sm font-medium leading-normal">
+                {{ request.args.get('city') if request.args.get('city') else 'Ahmedabad' }}
+            </p>
+            <span class="material-symbols-outlined text-primary text-lg">expand_more</span>
+        </button>
+
+        <button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 pl-3 pr-2 border border-primary/5 hover:bg-primary/20 transition-colors">
+            <p class="text-primary text-sm font-medium leading-normal">
+                {{ request.args.get('duration') if request.args.get('duration') else 'Next 12 Months' }}
+            </p>
+            <span class="material-symbols-outlined text-primary text-lg">calendar_month</span>
+        </button>
+
+        <button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 pl-3 pr-2 border border-primary/5 hover:bg-primary/20 transition-colors">
+            <p class="text-primary text-sm font-medium leading-normal">
+                Query: {{ request.args.get('query') if request.args.get('query') else 'Milk' }}
+            </p>
+            <span class="material-symbols-outlined text-primary text-lg">close</span>
+        </button>
+    </div>
+</div>
+<div class="mb-1">
+<div class="flex gap-4 px-0 justify-between items-stretch">
+<a class="flex flex-col items-center justify-center border-b-[4px] border-b-primary bg-white dark:bg-background-dark text-primary pb-[16px] pt-5 px-4 flex-1 rounded-t-xl shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] transition-all" href="#">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Demand Forecasting</p>
+</a>
+<div class="flex gap-4 px-0 justify-between items-stretch">
+<a href="{{ url_for('top_sellers') }}" class="flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-white text-sm font-bold shadow-md hover:brightness-110 transition-all">
+    <span class="material-symbols-outlined text-lg">leaderboard</span>
+    <span>Top Sellers</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[4px] border-b-transparent bg-white/50 dark:bg-background-dark/50 text-[#6c717f] dark:text-gray-400 pb-[16px] pt-5 px-4 flex-1 rounded-t-xl hover:bg-white dark:hover:bg-background-dark transition-all" 
+   href="{{ url_for('generate_report') }}">
+    <span class="material-symbols-outlined mb-1">description</span>
+    <p class="text-sm font-bold leading-normal tracking-[0.015em]">Generate Report</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[4px] border-b-transparent bg-white/50 dark:bg-background-dark/50 text-[#6c717f] dark:text-gray-400 pb-[16px] pt-5 px-4 flex-1 rounded-t-xl hover:bg-white dark:hover:bg-background-dark transition-all" href="#">
+<span class="material-symbols-outlined mb-1">history</span>
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Past Overview</p>
+</a>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark rounded-b-xl rounded-tr-none shadow-xl border-x border-b border-primary/10 p-8">
+<div class="flex flex-wrap gap-6 mb-8">
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-xl p-6 border border-primary/10 bg-primary/5">
+<div class="flex items-center justify-between">
+<p class="text-[#6c717f] dark:text-gray-400 text-sm font-medium leading-normal">Market Confidence</p>
+<span class="material-symbols-outlined text-primary text-xl">verified</span>
+</div>
+<p class="text-[#131416] dark:text-white tracking-tight text-3xl font-bold leading-tight">96.8%</p>
+<div class="flex items-center gap-1 text-primary text-sm font-bold">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span>+1.2% vs last mo</span>
+</div>
+</div>
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-xl p-6 border border-primary/10 bg-primary/5">
+<div class="flex items-center justify-between">
+<p class="text-[#6c717f] dark:text-gray-400 text-sm font-medium leading-normal">Daily Production</p>
+<span class="material-symbols-outlined text-primary text-xl">water_drop</span>
+</div>
+<p class="text-[#131416] dark:text-white tracking-tight text-3xl font-bold leading-tight">42.5k L</p>
+<div class="flex items-center gap-1 text-primary text-sm font-bold">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span>+3.4% capacity</span>
+</div>
+</div>
+<div class="flex min-w-[200px] flex-1 flex-col gap-2 rounded-xl p-6 border border-primary/10 bg-primary/5">
+<div class="flex items-center justify-between">
+<p class="text-[#6c717f] dark:text-gray-400 text-sm font-medium leading-normal">Predicted Milk Demand</p>
+<span class="material-symbols-outlined text-primary text-xl">science</span>
+</div>
+<p class="text-[#131416] dark:text-white tracking-tight text-3xl font-bold leading-tight">12.4k KL</p>
+<div class="flex items-center gap-1 text-primary text-sm font-bold">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span>+8.7% forecast</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-xl font-bold text-[#131416] dark:text-white">India Milk Market Demand Trend</h3>
+</div>
+<div class="flex items-center gap-4 bg-primary/5 px-4 py-2 rounded-lg border border-primary/10">
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-[#6c717f]"></span>
+<span class="text-xs font-semibold text-[#6c717f]">Historical</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-3 rounded-full bg-primary"></span>
+<span class="text-xs font-semibold text-primary">Forecasted</span>
+</div>
+</div>
+</div>
+<div class="flex min-h-[350px] flex-1 flex-col gap-8 py-4 px-2 border border-primary/5 rounded-xl bg-background-light/30 dark:bg-white/5">
+<div class="relative w-full h-full flex flex-col justify-end">
+<svg class="overflow-visible" fill="none" height="280" preserveAspectRatio="none" viewBox="0 0 1000 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="chartGradient" x1="0" x2="0" y1="0" y2="300">
+<stop stop-color="#637AB9" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="#637AB9" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M0 240 Q 50 250 100 200 T 200 180 T 300 220 T 400 150 T 500 130 T 600 160 T 700 80 T 800 100 T 900 40 T 1000 60 L 1000 300 L 0 300 Z" fill="url(#chartGradient)"></path>
+<path d="M0 240 Q 50 250 100 200 T 200 180 T 300 220 T 400 150 T 500 130 T 600 160" fill="none" stroke="#6c717f" stroke-linecap="round" stroke-width="4"></path>
+<path d="M600 160 T 700 80 T 800 100 T 900 40 T 1000 60" fill="none" stroke="#637AB9" stroke-dasharray="8,4" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="600" cy="160" fill="white" r="6" stroke="#637AB9" stroke-width="2"></circle>
+</svg>
+<div class="flex justify-between mt-6 px-2 border-t border-primary/10 pt-4">
+<p class="text-[#6c717f] text-xs font-bold uppercase">Sep '25</p>
+<p class="text-[#6c717f] text-xs font-bold uppercase">Nov '25</p>
+<p class="text-[#6c717f] text-xs font-bold uppercase">Jan '26</p>
+<p class="text-[#6c717f] text-xs font-bold uppercase">Mar '26</p>
+<p class="text-primary text-xs font-bold uppercase flex flex-col items-center">
+                                Today
+                                <span class="size-1 bg-primary rounded-full mt-1"></span>
+</p>
+<p class="text-primary text-xs font-bold uppercase">Jul '26</p>
+<p class="text-primary text-xs font-bold uppercase">Sep '26</p>
+<p class="text-primary text-xs font-bold uppercase">Nov '26</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-end gap-3 mt-4">
+<button class="flex items-center gap-2 text-sm font-semibold text-[#6c717f] hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                        Export Milk Data
+                    </button>
+<button class="flex items-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-white text-sm font-bold shadow-md hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-lg">bolt</span>
+                        Get Milk AI Insights
+                    </button>
+</div>
+</div>
+</div>
+<footer class="mt-12 mb-8 flex items-center justify-between border-t border-primary/10 pt-6">
+<div class="flex items-center gap-2 text-[#6c717f]">
+<span class="material-symbols-outlined text-sm">info</span>
+<p class="text-xs">Data refreshed 12 minutes ago for India Milk cluster. Next scheduled sync in 48 minutes.</p>
+</div>
+<div class="text-[#6c717f] text-xs font-medium">
+                © 2026 Analytix India Systems. All rights reserved.
+            </div>
+</footer>
+</main>
+</div>
+
+</body></html>

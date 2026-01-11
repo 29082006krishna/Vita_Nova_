@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Analytix - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#637AB9",
+                        "background-light": "#F0F2F7",
+                        "background-dark": "#151b1d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f5f9;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-[#f3f5f9] dark:bg-background-dark min-h-screen">
+<div class="flex flex-col min-h-screen">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-10 py-4 sticky top-0 z-50 shadow-sm">
+<div class="flex items-center gap-2 text-[#131516] dark:text-white">
+<div class="size-6 text-primary">
+<img src="https://i.postimg.cc/fbHxVSPG/logo-removebg-preview.png" alt="Logo" class="w-full h-full object-contain">
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] font-display">Analytix</h2>
+</div>
+<div class="flex items-center gap-8">
+<nav class="flex items-center gap-8">
+<a class="text-sm font-semibold text-[#6c7a7f] hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-[#6c7a7f] hover:text-primary transition-colors" href="#">Services</a>
+</nav>
+<div class="flex items-center gap-2 cursor-pointer border-l border-gray-200 dark:border-gray-700 pl-6 ml-2">
+<div class="size-9 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full max-w-[1440px] mx-auto p-4 sm:p-6 lg:p-10 flex flex-col">
+<section class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800 p-10 flex flex-col gap-10 flex-grow min-h-[600px]">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col gap-3">
+<label class="text-[#131516] dark:text-gray-200 text-sm font-bold uppercase tracking-wider">LOCATION</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-[22px]">search</span>
+<input class="w-full pl-12 pr-4 h-14 rounded-xl border border-[#dee2e3] dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-base transition-all" type="text" value="Search in India"/>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<label class="text-[#131516] dark:text-gray-200 text-sm font-bold uppercase tracking-wider">SELECT STATE</label>
+<div class="relative">
+<select id="state-select" class="w-full h-14 pl-5 pr-12 rounded-xl border border-[#dee2e3] dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-base appearance-none transition-all cursor-pointer">
+<option value="">States</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Delhi">Delhi</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none text-[24px]">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<label class="text-[#131516] dark:text-gray-200 text-sm font-bold uppercase tracking-wider">SELECT CITY</label>
+<div class="relative">
+<select id="city-select" class="w-full h-14 pl-5 pr-12 rounded-xl border border-[#dee2e3] dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-base appearance-none transition-all cursor-pointer">
+<option value="">Cities</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none text-[24px]">expand_more</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<label class="text-[#131516] dark:text-gray-200 text-sm font-bold uppercase tracking-wider">SET DURATION</label>
+<div class="relative">
+<select id="duration-select" class="w-full h-14 pl-5 pr-12 rounded-xl border border-[#dee2e3] dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-base appearance-none transition-all cursor-pointer">
+<option value="">Set Duration</option>
+<option value="Next 3 Months">Next 3 Months</option>
+<option value="Next 9 Months">Next 9 Months</option>
+<option value="Next 12 Months">Next 12 Months</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-primary pointer-events-none text-[24px]">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4 mt-4">
+<label class="text-[#131516] dark:text-gray-200 text-lg font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">auto_awesome</span>
+                    Ask AI Intelligence
+                </label>
+<div class="flex flex-col gap-6">
+<div class="relative">
+<textarea id="ai-input" class="w-full min-h-[160px] py-6 px-6 rounded-2xl border border-[#dee2e3] dark:border-gray-700 dark:bg-gray-800 focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none text-lg transition-all resize-none" placeholder="Search and Ask..."></textarea>
+</div>
+
+<div class="flex justify-end">
+    <button type="button" onclick="validateAndSearch()" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-xl font-bold flex items-center gap-2 transition-all shadow-lg shadow-primary/25">
+        <span class="material-symbols-outlined">search</span>
+        Search and Ask
+    </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+
+<script>
+    // State-City Logic
+    const stateSelect = document.getElementById('state-select');
+    const citySelect = document.getElementById('city-select');
+    const cityData = {
+        "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+        "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
+        "Karnataka": ["Bangalore", "Mysore"],
+        "Delhi": ["New Delhi"]
+    };
+
+    stateSelect.addEventListener('change', function() {
+        const selectedState = this.value;
+        citySelect.innerHTML = '<option value="">Cities</option>';
+        if (selectedState && cityData[selectedState]) {
+            cityData[selectedState].forEach(city => {
+                const option = document.createElement('option');
+                option.value = city; option.textContent = city;
+                citySelect.appendChild(option);
+            });
+        }
+    });
+
+    // Validation and Search Logic
+    function validateAndSearch() {
+        const aiInput = document.getElementById('ai-input').value.trim();
+        const state = document.getElementById('state-select').value;
+        const city = document.getElementById('city-select').value;
+        const durationSelect = document.getElementById('duration-select');
+        const duration = durationSelect ? durationSelect.value : '';
+
+        // 1. Validation check
+        if (aiInput === "") {
+            alert("Please write something in the 'Search and Ask' box before proceeding.");
+            return; 
+        }
+
+        // 2. Redirect - Note: using 'demandForcasting' to match your Python app.py
+        const url = `{{ url_for('demandForcasting') }}?state=${state}&city=${city}&duration=${duration}&query=${encodeURIComponent(aiInput)}`;        
+        window.location.href = url;
+    }
+</script>
+
+</body></html>

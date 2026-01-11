@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Company Product Insights - Analytix</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#637AB9",
+                        "background-light": "#f6f7f7",
+                        "background-dark": "#15171d",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        :root {
+            --brand-color: #637AB9;
+        }
+        .product-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-[#131416] dark:text-white">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 bg-white dark:bg-background-dark px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<img src="https://i.postimg.cc/fbHxVSPG/logo-removebg-preview.png" alt="Logo" class="w-full h-full object-contain">
+
+</div>
+<h2 class="text-[#131416] dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Analytix</h2>
+</div>
+</div>
+<div class="flex items-center gap-9">
+<div class="flex items-center gap-9">
+<a class="text-[#6c717f] dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-[#6c717f] dark:text-gray-400 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Services</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuACAxgHz1IY5jFO5qpY81_Pvqn-V-PI9AsfznyegRtrjRrzPmwa08coCcDsGX9ggAG1NrGHOlUGJXwGhwKUSgB6g5RtFxZJbuD_DhZmwwePNx4XuYs6g8sSIpCBEsIq-Cn2NZH9JzNARy6FXP6vf8MUyyPsOmDFu_hxKBjydKeYo3uu2H6y-4muV18V0D6AACzV3MNLdR6ld2sbiQUQbWyB8ML0UBglgAj3SlU5FMPhGu0zTdpwB2ocq2Tgc8N5sHO8gC5tcWZ6Y2M");'></div>
+</div>
+</header>
+<main class="flex flex-col flex-1 max-w-[1200px] mx-auto w-full px-6 py-8">
+<div class="mb-4 flex items-center gap-2 text-sm text-[#6c717f]">
+<a class="hover:text-primary transition-colors" href="#">Top Sellers</a>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-primary font-medium">Amul</span>
+</div>
+<div class="mb-6 flex flex-col gap-1">
+<h1 class="text-3xl font-bold tracking-tight text-[#131416] dark:text-white">Amul</h1>
+<p class="text-[#6c717f] dark:text-gray-400 text-base">Top Milk Products by Sales</p>
+</div>
+<div class="bg-white dark:bg-background-dark rounded-xl shadow-sm border border-primary/10 p-2 mb-8">
+<div class="flex items-center gap-2 p-1 flex-wrap">
+<div class="flex h-10 items-center gap-2 px-3 text-[#6c717f] dark:text-gray-400">
+<span class="material-symbols-outlined text-lg">filter_alt</span>
+<p class="text-xs font-bold uppercase tracking-wider">Active Filters:</p>
+</div>
+<div class="flex h-9 items-center gap-x-2 rounded-lg bg-primary/10 px-3 border border-primary/5">
+<p class="text-primary text-sm font-medium leading-normal">India</p>
+</div>
+<div class="flex h-9 items-center gap-x-2 rounded-lg bg-primary/10 px-3 border border-primary/5">
+<p class="text-primary text-sm font-medium leading-normal">Maharashtra</p>
+</div>
+<div class="flex h-9 items-center gap-x-2 rounded-lg bg-primary/10 px-3 border border-primary/5">
+<p class="text-primary text-sm font-medium leading-normal">Mumbai</p>
+</div>
+<div class="flex h-9 items-center gap-x-2 rounded-lg bg-primary/10 px-3 border border-primary/5">
+<p class="text-primary text-sm font-medium leading-normal">Next 12 Months</p>
+<span class="material-symbols-outlined text-primary text-lg">calendar_month</span>
+</div>
+<div class="flex h-9 items-center gap-x-2 rounded-lg bg-primary/10 px-3 border border-primary/5">
+<p class="text-primary text-sm font-medium leading-normal">Query: Milk</p>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark rounded-xl shadow-xl border border-primary/10 p-8">
+<div class="mb-8 flex justify-between items-center">
+<div>
+<h3 class="text-xl font-bold text-[#131416] dark:text-white">Product Performance Insights</h3>
+<p class="text-[#6c717f] dark:text-gray-400 text-sm">Detailed ranking of milk categories based on regional demand volume.</p>
+</div>
+<button class="flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Export Data
+                </button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="product-card flex items-center bg-white dark:bg-white/5 p-6 rounded-xl border border-primary/10 shadow-sm transition-all">
+<div class="flex items-center justify-center size-12 rounded-full bg-gray-100 dark:bg-white/10 text-[#6c717f] dark:text-gray-400 font-bold mr-6">
+                        1
+                    </div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131416] dark:text-white text-lg">Buffalo Milk</h4>
+<p class="text-[#6c717f] dark:text-gray-400 text-xs mt-0.5">Primary volume driver in suburban sectors</p>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">CURRENTLY TRENDING</span>
+</div>
+</div>
+<div class="product-card flex items-center bg-white dark:bg-white/5 p-6 rounded-xl border border-primary/10 shadow-sm transition-all">
+<div class="flex items-center justify-center size-12 rounded-full bg-gray-100 dark:bg-white/10 text-[#6c717f] dark:text-gray-400 font-bold mr-6">
+                        2
+                    </div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131416] dark:text-white text-lg">Gold Milk</h4>
+<p class="text-[#6c717f] dark:text-gray-400 text-xs mt-0.5">High-fat premium segment leader</p>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">CURRENTLY TRENDING</span>
+</div>
+</div>
+<div class="product-card flex items-center bg-white dark:bg-white/5 p-6 rounded-xl border border-primary/10 shadow-sm transition-all">
+<div class="flex items-center justify-center size-12 rounded-full bg-gray-100 dark:bg-white/10 text-[#6c717f] dark:text-gray-400 font-bold mr-6">
+                        3
+                    </div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131416] dark:text-white text-lg">Toned Milk</h4>
+<p class="text-[#6c717f] dark:text-gray-400 text-xs mt-0.5">Most consistent daily household consumption</p>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">CURRENTLY TRENDING</span>
+</div>
+</div>
+<div class="product-card flex items-center bg-white dark:bg-white/5 p-6 rounded-xl border border-primary/10 shadow-sm transition-all">
+<div class="flex items-center justify-center size-12 rounded-full bg-gray-100 dark:bg-white/10 text-[#6c717f] dark:text-gray-400 font-bold mr-6">
+                        4
+                    </div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131416] dark:text-white text-lg">Full Cream Milk</h4>
+<p class="text-[#6c717f] dark:text-gray-400 text-xs mt-0.5">Preferred for institutional and commercial use</p>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">CURRENTLY TRENDING</span>
+</div>
+</div>
+<div class="product-card flex items-center bg-white dark:bg-white/5 p-6 rounded-xl border border-primary/10 shadow-sm transition-all">
+<div class="flex items-center justify-center size-12 rounded-full bg-gray-100 dark:bg-white/10 text-[#6c717f] dark:text-gray-400 font-bold mr-6">
+                        5
+                    </div>
+<div class="flex-1">
+<h4 class="font-bold text-[#131416] dark:text-white text-lg">Double Toned Milk</h4>
+<p class="text-[#6c717f] dark:text-gray-400 text-xs mt-0.5">Niche market growing in health-conscious urban areas</p>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-3 py-1.5 rounded-full border border-primary/20">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-primary uppercase tracking-wider">CURRENTLY TRENDING</span>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-12 mb-8 flex items-center justify-between border-t border-primary/10 pt-6">
+<div class="flex items-center gap-2 text-[#6c717f]">
+<span class="material-symbols-outlined text-sm">info</span>
+<p class="text-xs">Data refreshed 12 minutes ago for Amul</p>
+</div>
+<div class="text-[#6c717f] text-xs font-medium">
+                © 2026 Analytix India Systems. All rights reserved.
+            </div>
+</footer>
+</main>
+</div>
+
+</body></html>
