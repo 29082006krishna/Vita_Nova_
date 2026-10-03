@@ -158,42 +158,6 @@ This design prevents the common **straight-line prediction problem**.
 
 ---
 
-## 💡 Why This Model Works
-
-✔ Transformer attention captures seasonality and trends
-✔ Residual blocks prevent forecast collapse
-✔ Monthly-direct strategy ensures stability
-✔ Deep nonlinear head improves demand sensitivity
-
----
-
-## 🎓 Academic / Viva Summary
-
-> “A Transformer-based monthly forecasting model with attention and residual learning was implemented to directly predict future sales and demand, ensuring stable, realistic, and calendar-aligned forecasts suitable for real-world decision-making.”
-
----
-
-## 🏢 Suitable Use Cases
-
-* 📦 Inventory planning
-* 🚚 Supply chain optimization
-* 🛍️ Retail demand forecasting
-* 📊 Business analytics dashboards
-* 🎓 Academic projects and hackathons
-
----
-
-## 📝 Notes
-
-* Architecture is conceptually aligned with lightweight time-series Transformers (LiteFormer-style behavior)
-* Implemented using **PyTorch** for flexibility and extensibility
-
----
-
-## ✅ End of Documentation
-
----
-
 ## 🚀 Features
 
 * 📅 **Monthly-direct sales & demand forecasting** (3 / 6 / 12 months)
